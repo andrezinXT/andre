@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>O MELHOR TI — Galeria, Notícias, Áudio, Listas e Tabelas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:gray; --card:black; --muted:white; --accent:white;
+      --radius:12px; --pad:16px; --maxw:1100px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Roboto, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.45;color:white;background:var(--bg);padding:28px}
+
+    .container{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+    header.site-header{grid-column:1/-1;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+    header h1{font-family:Poppins, sans-serif;font-size:1.25rem;color:#0f172a}
+    nav a{margin-left:12px;color:var(--accent);text-decoration:none;font-weight:500}
+
+    /* cards */
+    .card{background:var(--card);border-radius:var(--radius);padding:var(--pad);box-shadow:0 6px 18px rgba(16,24,40,0.06);border:1px solid rgba(16,24,40,0.04)}
+
+    /* --- Galeria --- */
+    .gallery h2{font-family:Poppins, sans-serif;margin-bottom:8px}
+    .fig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    figure{background:#fcfdff;border-radius:10px;overflow:hidden;border:1px solid #eef2f7}
+    .img-wrap{position:relative;overflow:hidden;height:180px}
+    img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(.2,.9,.2,1)}
+    figure:hover img{transform:scale(1.06)}
+    figcaption{padding:10px 12px;font-size:0.95rem;color:#333;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));}
+    .img-dynamic{animation:float 10s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-6px) scale(1.02)}50%{transform:translateY(0) scale(1)}75%{transform:translateY(6px) scale(0.99)}100%{transform:translateY(0) scale(1)}}
+
+    /* --- Notícias (barra lateral) --- */
+    .sidebar h3{font-family:Poppins, sans-serif;margin-bottom:8px}
+    .news-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .news-item{display:flex;gap:10px;align-items:flex-start}
+    .news-thumb{flex:0 0 72px;height:56px;border-radius:8px;overflow:hidden}
+    .news-thumb img{width:100%;height:100%;object-fit:cover}
+    .news-body{font-size:0.92rem}
+    .news-title{font-weight:600;margin-bottom:4px}
+    .news-meta{font-size:0.8rem;color:var(--muted)}
+
+    a.read-more{display:inline-block;margin-top:6px;color:var(--accent);text-decoration:none;font-size:0.92rem}
+
+    /* --- Áudio --- */
+    .audio-block{grid-column:1/-1;margin-top:18px}
+    .player{display:flex;flex-direction:column;gap:10px}
+    .playlist{display:flex;gap:10px;flex-wrap:wrap}
+    .track{padding:8px 10px;border-radius:8px;background:gray;border:1px solid #e6eef8;font-size:0.95rem}
+
+    /* --- Tabelas & Listas --- */
+.lists h2, .tables h2{
+  font-family:Poppins, sans-serif;
+  margin-bottom:8px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  font-size:0.70rem;
+  color:white;
+  background:#1f1f1f; /* fundo uniforme */
+  border-radius:8px;
+  overflow:hidden;
+}
+
+thead th{
+  background:#2d2d2d;
+  padding:12px;
+  text-align:left;
+  font-weight:600;
+  border-bottom:2px solid #444;
+}
+
+tbody td{
+  padding:12px;
+  border-bottom:1px solid #333;
+}
+
+tfoot td{
+  padding:12px;
+  font-weight:700;
+  background:#2d2d2d;
+  border-top:2px solid #444;
+}
+
+    /* Sticky aside */
+    aside .card{position:sticky;top:28px}
+
+    /* Responsivo */
+    @media (max-width:980px){.container{grid-template-columns:1fr}.container aside{order:2} .audio-block{grid-column:1}} 
+    @media (max-width:480px){.img-wrap{height:140px}}
+
+    /* pequenas anotações visuais */
+    p.lead{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <h1>Projeto Unificado</h1>
+      <nav>
+        <a href="#galeria">Galeria</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#audio">Áudio</a>
+        <a href="#listas">Listas</a>
+        <a href="#tabela">Tabela</a>
+      </nav>
+    </header>
+
+    <main id="galeria" class="card gallery">
+      <h2>Galeria dinâmica</h2>
+      <p class="lead">Imagens atualizadas e fontes alteradas (Poppins nos títulos; Roboto no corpo).</p>
+
+      <div class="fig-grid">
+        <figure>
+          <div class="img-wrap"><img class="img-dynamic" src="https://vasconoticias.com.br/wp-content/uploads/2020/08/ribamar.jpg" alt="Paisagem aleatória 1"></div>
+          <figcaption>RIBAMAR DO VASCO — <small>Fonte: picsum.photos</small></figcaption>
+        </figure>
+
+        <figure>
+          <div class="img-wrap"><img class="img-dynamic" src="https://img.quizur.com/f/img5fc691711c2796.01760158.png?lastEdited=1606848887" alt="Paisagem aleatória 1"></div>
+          <figcaption>O TEMPO QUE O NOBRU JOGAVA — <small>Fonte: picsum.photos</small></figcaption>
+        </figure>
+
+        <figure>
+          <div class="img-wrap"><img class="img-dynamic" src="https://www.umdoisesportes.com.br/thumbor/56pIQ4vsYggXaIAD65nUEBVXwGk=/1920x1080/smart/filters:format(webp)/https://www.umdoisesportes.com.br//media/umdoisesportes/2025/09/18114223/Montagens-GERAIS-7.jpg" alt="Paisagem aleatória 1"></div>
+          <figcaption>EU TE AMO MINHA MAE — <small>Fonte: picsum.photos</small></figcaption>
+        </figure>
+
+        <figure>
+          <div class="img-wrap">
+            <img class="img-dynamic"
+                 src="https://i.ibb.co/0jmGbmSc/79502cbe-e954-4a7b-a1ee-a7d70b57f51a.jpg"
+                 alt="Casal TI">
+          </div>
+          <figcaption>CASAL DOS TI — <small>Fonte: i.ibb.co</small></figcaption>
+        </figure>
+
+      </div>
+    </main>
+
+    <aside class="card sidebar" aria-labelledby="noticias">
+      <h3 id="noticias">Bloco de notícias</h3>
+      <ul class="news-list">
+        <li class="news-item">
+          <div class="news-thumb"><img src="https://picsum.photos/400/300?random=201" alt="thumb1"></div>
+          <div class="news-body"><div class="news-title">Novo festival de música local</div><div class="news-meta">Evento no domingo — 10h • Centro cultural</div></div>
+        </li>
+
+        <li class="news-item">
+          <div class="news-thumb"><img src="https://picsum.photos/400/300?random=202" alt="thumb2"></div>
+          <div class="news-body"><div class="news-title">Exposição de arte contemporânea</div><div class="news-meta">Entrada gratuita — até 30/09</div></div>
+        </li>
+
+        <li class="news-item">
+          <div class="news-thumb"><img src="https://picsum.photos/400/300?random=203" alt="thumb3"></div>
+          <div class="news-body"><div class="news-title">Mercado de produtores locais</div><div class="news-meta">Sábado — feira orgânica</div></div>
+        </li>
+      </ul>
+
+      <a class="read-more" href="#">Ver mais notícias</a>
+    </aside>
+
+    
+    
+    <section class="card audio-block" aria-labelledby="audioLabel">
+      <div class="player">
+
+        <audio controls preload="none">
+          <source src="file:///E:/dawnload/instant-ribamar.mp3" type="audio/mpeg">
+          Seu navegador não suporta áudio HTML5.
+        </audio>
+        <div class="track">▶️ Faixa 1 — hj-tem-gol-do-ribamar.mp3</div>
+
+        <audio controls preload="none">
+          <source src="file:///E:/dawnload/ain-nobru-apelao.mp3" type="audio/mpeg">
+          Seu navegador não suporta áudio HTML5.
+        </audio>
+        <div class="track">▶️ Faixa 2 — AIII NOBRU APELÃOOO</div>
+
+        <audio controls preload="none">
+          <source src="file:///E:/dawnload/WhatsApp%20Video%202025-09-22%20at%2011.00.20%20AM.mp3" type="audio/mpeg">
+          Seu navegador não suporta áudio HTML5.
+        </audio>
+        <div class="track">▶️ Faixa 3 — É O QUE?</div>
+
+        <audio controls preload="none">
+          <source src="file:///E:/dawnload/nao-nasci-gay.mp3" type="audio/mpeg">
+          Seu navegador não suporta áudio HTML5.
+        </audio>
+        <div class="track">▶️ Faixa 4 — CASAL DOS TI</div>
+      </div>
+    </section>
+
+
+    <main id="listas" class="card lists">
+      <h2>Exemplos de Listas</h2>
+      <p class="lead">Trechos da página de listas e tabelas, com mesmas fontes aplicadas.</p>
+
+      <div class="example-box">
+        <h3>Listas não ordenadas</h3>
+        <ul>
+          <li>Item principal A</li>
+          <li>Item principal B
+            <ul>
+              <li>Subitem B.1</li>
+              <li>Subitem B.2</li>
+            </ul>
+          </li>
+          <li>Item principal C</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:12px">
+        <h3>Lista de definição</h3>
+        <dl>
+          <dt>HTML</dt>
+          <dd>Linguagem de marcação usada para estruturar páginas web.</dd>
+
+          <dt>CSS</dt>
+          <dd>Linguagem de estilos usada para a apresentação visual da página.</dd>
+        </dl>
+      </div>
+    </main>
+
+    <section id="tabela" class="card tables">
+      <h2>Tabela demonstrativa</h2>
+      <p class="lead">Tabela de exemplo copiada e adaptada da página original.</p>
+
+      <div class="example-box">
+        <table>
+          <caption>Vendas por trimestre - ano exemplo</caption>
+          <colgroup>
+            <col style="width:40%">
+            <col style="width:20%">
+            <col style="width:20%">
+            <col style="width:20%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>1º Trimestre</th>
+              <th>2º Trimestre</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gadget A</td>
+              <td>R$ 12.800,00</td>
+              <td>R$ 15.400,00</td>
+              <td>R$ 28.200,00</td>
+            </tr>
+            <tr>
+              <td>Widget B</td>
+              <td>R$ 9.450,00</td>
+              <td>R$ 10.120,00</td>
+              <td>R$ 19.570,00</td>
+            </tr>
+            <tr>
+              <td>Componente C</td>
+              <td>R$ 6.700,00</td>
+              <td>R$ 7.300,00</td>
+              <td>R$ 14.000,00</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Total</td>
+              <td>R$ 28.950,00</td>
+              <td>R$ 32.820,00</td>
+              <td>R$ 61.770,00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
